@@ -1,0 +1,6 @@
+from django.conf.urls import url
+
+urlpatterns = [
+    url(r'^$', search_views.MySeachViewkk(), name='haystack_search'),  
+]
+

@@ -1,0 +1,14 @@
+*{
+margin: 0px;
+padding: 0px;
+}
+ol,ul{list-style:none;}
+#nav {height:24px;padding:5px 0;display:block;border-bottom:1px solid #ebebeb;}
+#sc_box{height:1150px;}
+#sc_box div{height:50px;vertical-align:text-bottom;}
+#sc_box div p{vertical-align:text-bottom;}
+#sc_box #ct {width:500px;height:40px;}
+#sc_box #ssb {width:100px;height:40px;border:1px solid #c0c0c0;cursor:pointer}
+#sc_res{margin-top:20px;margin-left:40px}
+#sc_res #ct {width:550px;height:30px;}
+#sc_res #ssb {width:100px;height:30px;border:1px solid #c0c0c0;cursor:pointer}

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}金融搜索，专注大数据的金融搜索{% endblock %}
+{% block content %}
+<div id="sc_box">
+<form method="get" action="/search/">
+ {% csrf_token %} 
+ <div></div>
+<p style="font-size:20px;color:red;font-size:22px;margin-bottom:10px;font-family:幼圆">金融搜索</p>
+<div>
+<input type="text" id="ct" name = "q">
+<input type="submit"  class="btn" id="ssb" style="background-color:#38f;font-size:13.5px;width:80px;height:42px;color:white;border:1px solid;font-family:幼圆" value="搜 索">
+</div>
+</form> 
+{% endblock %}
+</div>
+

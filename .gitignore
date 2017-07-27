@@ -1,0 +1,2 @@
+*.pyc
+SearchEngine/whoosh_index/

@@ -1,0 +1,43 @@
+{% extends 'search/base.html' %}
+
+{% block content %}
+<div style="border-bottom:1px solid #ebebeb;padding-bottom:10px;margin-bottom:10px;margin-top:20px;">
+	<p style="font-weight:bold;color:red;font-size:16px;float:left;padding-left:20px;font-family:幼圆;padding-right:10px;color:color;margin:10px;">金融搜索</h2>
+
+    <form method="get" action="." style="">
+		<input value="{{query}}" id="id_q" name="q" type="search" style="width:600px;height:40px;border:1px solid #ebebeb">
+        <input type="submit" value="搜 索" style="width:80px;height:40px;border:1px solid;background-color:#38f;font-size:13.5px;color:white;font-family:幼圆;cursor:pointer;">
+    </form>
+</div>
+
+<div style="margin-left:100px;width:600px;">
+        {% if query %}
+			{% for result in othersearch.data %}
+			<div style="margin-bottom:20px;margin-top:5px">
+                <p style="margin-bottom:0px">
+                    <a href="{{ result.url }}">{{ result.title }}</a>
+                </p>
+				<p style="font-size:13.5px;margin-bottom:0px;margin-top:5px">
+					{{result.description}}
+				</p>
+				<p style="font-size:13.5px;margin-bottom:0px;margin-top:5px;color:green">
+				{{result.author}} &nbsp;{{result.pubtime}} &nbsp;&nbsp;
+				</p>
+			</div>
+			{% empty %}
+                <p>No results found.</p>
+			{% endfor %}
+
+            {% if page.has_previous or page.has_next %}
+                <div>
+                    {% if page.has_previous %}<a href="?q={{ query }}&page={{ page.previous_page_number }}">{% endif %}« Previous{% if page.has_previous %}</a>{% endif %}
+                    |
+                    {% if page.has_next %}<a href="?q={{ query }}&page={{ page.next_page_number }}">{% endif %}Next »{% if page.has_next %}</a>{% endif %}
+                </div>
+            {% endif %}
+        {% else %}
+            {# Show some example queries to run, maybe query syntax, something else? #}
+        {% endif %}
+</div>
+{% endblock %}
+
