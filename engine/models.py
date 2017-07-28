@@ -4,7 +4,7 @@ from django.db import models
 
 # Create your models here.
 class News(models.Model):
-    url = models.TextField()
+    url = models.TextField(unique=True)
     image = models.TextField()
     title = models.TextField()
     content = models.TextField()
