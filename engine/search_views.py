@@ -20,13 +20,13 @@ class MySeachView(SearchView):
     def get_context(self):
         context = super(MySeachView,self).get_context()  
         query = context['query'].strip()
-        context['test'] = 'okkkkk'
+        print context['page']
 
-        if query:
+        #if query:
             #c = zerorpc.Client()
             #c.connect("tcp://127.0.0.1:4242")
             #ret = json.loads(c.process(query.encode('utf-8')))
-            ret = json.loads(requests.post("http://127.0.0.1:5001",params={'query':query.encode('utf-8')}).text)
-            context['othersearch'] = ret
+            #ret = json.loads(requests.post("http://127.0.0.1:5001",params={'query':query.encode('utf-8')}).text)
+            #context['othersearch'] = ret
         return context
 

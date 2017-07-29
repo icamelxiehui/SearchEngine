@@ -11,16 +11,23 @@ import datetime
 from haystack import indexes
 from engine.models import News
 
-class NoteIndex(indexes.SearchIndex, indexes.Indexable):
+class NewsIndex(indexes.SearchIndex, indexes.Indexable):
     text = indexes.CharField(document=True, use_template=True)
 
-    #author = indexes.CharField(model_attr='user')
-    #pub_date = indexes.DateTimeField(model_attr='pub_date')
+    #title = indexes.CharField(model_attr='title')
+    #url = indexes.CharField(model_attr='url')
+    #content = indexes.CharField(model_attr='content')
+    #author = indexes.CharField(model_attr='author')
+    #image = indexes.CharField(model_attr='image')
+    #website = indexes.CharField(model_attr='website')
+    #description = indexes.CharField(model_attr='description')
+    #pubtime = indexes.DateTimeField(model_attr='pubtime')
 
     def get_model(self):
         return News
 
     def index_queryset(self, using=None):
         """Used when the entire index for model is updated."""
+        #return self.get_model().objects.order_by("pubtime")
         return self.get_model().objects.all()
        # return self.get_model().objects.filter(pub_date__lte=datetime.datetime.now())

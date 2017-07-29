@@ -1,4 +1,6 @@
 {% extends 'search/base.html' %}
+{% load highlight %}
+{% load myhighlight %}
 
 {% block content %}
 <div style="border-bottom:1px solid #ebebeb;padding-bottom:10px;margin-bottom:10px;margin-top:20px;">
@@ -12,27 +14,45 @@
 
 <div style="margin-left:100px;width:600px;">
         {% if query %}
-			{% for result in othersearch.data %}
+			{% for result in page.object_list %}
 			<div style="margin-bottom:20px;margin-top:5px">
                 <p style="margin-bottom:0px">
-                    <a href="{{ result.url }}">{{ result.title }}</a>
+                    <a href="{{ result.object.url }}">{% myhighlight result.object.title with query  %}</a>
                 </p>
 				<p style="font-size:13.5px;margin-bottom:0px;margin-top:5px">
-					{{result.description}}
+					{% highlight result.object.content with query max_length 100 %}
 				</p>
 				<p style="font-size:13.5px;margin-bottom:0px;margin-top:5px;color:green">
-				{{result.author}} &nbsp;{{result.pubtime}} &nbsp;&nbsp;
+				{{result.object.website}} &nbsp;{{result.object.pubtime}} &nbsp;&nbsp;
+				{{result.object.pubtime}}
 				</p>
-			</div>
-			{% empty %}
+            {% empty %}
                 <p>No results found.</p>
-			{% endfor %}
+            {% endfor %}
+
+			{% if othersearch %}
+				{% for result in othersearch.data %}
+				<div style="margin-bottom:20px;margin-top:5px">
+					<p style="margin-bottom:0px">
+						<a href="{{ result.url }}">{{ result.title }}</a>
+					</p>
+					<p style="font-size:13.5px;margin-bottom:0px;margin-top:5px">
+						{{result.description}}
+					</p>
+					<p style="font-size:13.5px;margin-bottom:0px;margin-top:5px;color:green">
+					{{result.author}} &nbsp;{{result.pubtime}} &nbsp;&nbsp;
+					</p>
+				</div>
+				{% empty %}
+					<p>No results found.</p>
+				{% endfor %}
+			{% endif %}
 
             {% if page.has_previous or page.has_next %}
-                <div>
-                    {% if page.has_previous %}<a href="?q={{ query }}&page={{ page.previous_page_number }}">{% endif %}« Previous{% if page.has_previous %}</a>{% endif %}
+                <div style="margin-top:20px">
+                    {% if page.has_previous %}<a href="?q={{ query }}&page={{ page.previous_page_number }}">{% endif %}« 上一页{% if page.has_previous %}</a>{% endif %}
                     |
-                    {% if page.has_next %}<a href="?q={{ query }}&page={{ page.next_page_number }}">{% endif %}Next »{% if page.has_next %}</a>{% endif %}
+                    {% if page.has_next %}<a href="?q={{ query }}&page={{ page.next_page_number }}">{% endif %}下一页 »{% if page.has_next %}</a>{% endif %}
                 </div>
             {% endif %}
         {% else %}
