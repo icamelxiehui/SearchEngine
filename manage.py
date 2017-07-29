@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import os
 import sys
-sys.path.append("django-haystack")
+sys.path.append("haystack")
 sys.path.append("../../../Finance/Online/sofa/lib/finseg")
 
 if __name__ == "__main__":

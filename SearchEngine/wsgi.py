@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/1.10/howto/deployment/wsgi/
 
 import os
 import sys
-sys.path.append("../django-haystack")
+sys.path.append("../haystack")
 
 from django.core.wsgi import get_wsgi_application
 
