@@ -12,15 +12,21 @@ from .models import *
 import zerorpc
 import json
 import requests
+import datetime
 
 class MySeachView(SearchView):  
     def __init__(self): 
         SearchView.__init__(self) 
 
+    def get_results(self):
+        result = super(MySeachView,self).get_results().order_by("-pubtime")
+        return result
+
     def get_context(self):
         context = super(MySeachView,self).get_context()  
         query = context['query'].strip()
         print context['page']
+        print datetime.datetime.now()
 
         #if query:
             #c = zerorpc.Client()

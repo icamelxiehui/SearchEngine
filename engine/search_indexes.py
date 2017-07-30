@@ -21,7 +21,7 @@ class NewsIndex(indexes.SearchIndex, indexes.Indexable):
     #image = indexes.CharField(model_attr='image')
     #website = indexes.CharField(model_attr='website')
     #description = indexes.CharField(model_attr='description')
-    #pubtime = indexes.DateTimeField(model_attr='pubtime')
+    pubtime = indexes.DateTimeField(model_attr='pubtime')
 
     def get_model(self):
         return News
