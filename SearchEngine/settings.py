@@ -130,6 +130,6 @@ HAYSTACK_CONNECTIONS = {
 }
 
 #auto update index
-#HAYSTACK_SIGNAL_PROCESSOR = "haystack.signals.RealtimeSignalProcesso"
+HAYSTACK_SIGNAL_PROCESSOR = "haystack.signals.RealtimeSignalProcessor"
 # every line show 10
 HAYSTACK_SEARCH_RESULTS_PER_PAGE  =  10 
