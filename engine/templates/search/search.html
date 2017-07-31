@@ -60,9 +60,6 @@ function getDateDiff(a){
 				</p>
 			</div>
             {% empty %}
-                <p>No results found.</p>
-            {% endfor %}
-
 			{% if othersearch %}
 				{% for result in othersearch.data %}
 				<div style="margin-bottom:20px;margin-top:5px">
@@ -79,7 +76,10 @@ function getDateDiff(a){
 				{% empty %}
 					<p>No results found.</p>
 				{% endfor %}
+        		{% else %}
+                		<p>No results found.</p>
 			{% endif %}
+            {% endfor %}
 
             {% if page.has_previous or page.has_next %}
                 <div style="margin-top:20px">
