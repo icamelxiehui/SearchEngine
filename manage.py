@@ -2,7 +2,7 @@
 import os
 import sys
 sys.path.append("haystack")
-sys.path.append("../../../Finance/Online/sofa/lib/finseg")
+sys.path.append("finseg")
 
 if __name__ == "__main__":
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "SearchEngine.settings")

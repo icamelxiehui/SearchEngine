@@ -10,6 +10,7 @@ https://docs.djangoproject.com/en/1.10/howto/deployment/wsgi/
 import os
 import sys
 sys.path.append("../haystack")
+sys.path.append("../finseg")
 
 from django.core.wsgi import get_wsgi_application
 

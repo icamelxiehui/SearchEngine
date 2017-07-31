@@ -58,6 +58,7 @@ function getDateDiff(a){
 				{{result.object.website}} &nbsp;
 				<script type="text/javascript">var ret=getDateDiff("{{result.object.pubtime|date:"Y/m/d H:i:s"}}");document.write(ret);</script>
 				</p>
+			</div>
             {% empty %}
                 <p>No results found.</p>
             {% endfor %}
