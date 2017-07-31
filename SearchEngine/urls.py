@@ -24,6 +24,7 @@ urlpatterns = [
     url(r'^$', views.index),  # new
     url(r'^textseg/', views.textseg),
     url(r'^search/', search_views.MySeachView(), name='haystack_search'),  
+    url(r'^test/', search_views.MyTestView(), name='haystack_search'),  
 ]
 
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
