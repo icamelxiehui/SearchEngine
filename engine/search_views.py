@@ -13,6 +13,7 @@ import zerorpc
 import json
 import requests
 import datetime
+import logging
 
 class MySeachView(SearchView):  
     def __init__(self): 
@@ -30,7 +31,11 @@ class MySeachView(SearchView):
             #c = zerorpc.Client()
             #c.connect("tcp://127.0.0.1:4242")
             #ret = json.loads(c.process(query.encode('utf-8')))
-            ret = json.loads(requests.post("http://127.0.0.1:5001",params={'query':query.encode('utf-8')}).text)
+            #ret = json.loads(requests.post("http://127.0.0.1:5001",params={'query':query.encode('utf-8')}).text)
+            ret = None
             context['othersearch'] = ret
+
+        logger = logging.getLogger('django')
+        logger.info("[query:%s]" % query)
         return context
 
