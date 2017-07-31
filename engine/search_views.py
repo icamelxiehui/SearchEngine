@@ -14,6 +14,7 @@ import json
 import requests
 import datetime
 import logging
+from django.shortcuts import render
 
 class MySeachView(SearchView):  
     def __init__(self): 
@@ -67,4 +68,13 @@ class MyTestView(SearchView):
 
         logger.info("[query:%s]" % query)
         return context
+    def create_response(self):
+        """
+        Generates the actual HttpResponse to send back to the user.
+        """
+
+        context = self.get_context()
+
+        return render(self.request, "search/test.html", context)
+
 
