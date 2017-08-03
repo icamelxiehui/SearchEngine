@@ -48,3 +48,25 @@ class Marketoverview(Document):
     description = StringField()
     meta = { 'collection': 'market_overview'}
 
+class Morningpage(Document):
+    title = StringField(max_length=50)  
+    url = StringField(max_length=50)  
+    pubtime = DateTimeField()
+    author = StringField(max_length=50)  
+    website = StringField(max_length=50)  
+    image= StringField(max_length=50)  
+    content = StringField()
+    description = StringField()
+    meta = { 'collection': 'morning_page'}
+
+class Zqpage(Document):
+    title = StringField(max_length=50)  
+    url = StringField(max_length=50)  
+    pubtime = DateTimeField()
+    author = StringField(max_length=50)  
+    website = StringField(max_length=50)  
+    image= StringField(max_length=50)  
+    content = StringField()
+    description = StringField()
+    meta = { 'collection': 'zq_page'}
+
