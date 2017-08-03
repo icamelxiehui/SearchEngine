@@ -13,22 +13,23 @@ function changeBgColor(link)
 }
 </script>
 <style type="text/css">
-table th,td{border:1px solid #c0c0c0;}
+table th,td{border:1px solid #c0c0c0;padding:5px}
+table th{background-color:#38f;color:white}
 .current{background-color:white;}
 .row1{background-color:white;}
 .row2{background-color:#c0c0c0;}
 </style>
-<div style="">
+<div style="margin:0 auto;width:1200px;">
 <div id="left_nav"style="width:150px;float:left;background-color:#c0c0c0">
 	<ul>
-		<li style="background-color:#5bc0de;">数据</li>
+		<li style="background-color:#5bc0de;">数据类型</li>
 		<li class="{% if news %}current{% endif %}"><a href="/datanews">新闻</a></li>
 		<li class="{% if report %}current{% endif %}"><a href="/datareport">公告</a></li>
 		<li class="{% if research %}current{% endif %}"><a href="/dataresearch">研报</a></li>
 	</ul>
 </div>
 
-<div style="width:900px;float:left;text-align:left">
+<div style="width:900px;float:left;text-align:left;font-size:12px;">
 	{% if news %}
 	<table border="0" cellspacing="0" cellpadding="0" width="100%">
 				<tr>
@@ -74,7 +75,7 @@ table th,td{border:1px solid #c0c0c0;}
 					<td>
 						{{result.category}}
 					</td>
-					<td style="border:1px solid #c0c0c0">
+					<td style="border:1px solid #c0c0c0" width="100px">
 						{{result.pubtime|date:"Y年m月d日"}}
 					</td>
 				</tr>
@@ -103,7 +104,7 @@ table th,td{border:1px solid #c0c0c0;}
 					<td style="border:1px solid #c0c0c0">
 						<a href="{{ result.url }}">{{ result.title }}</a>
 					</td>
-					<td>
+					<td width="50px">
 						{{result.category}}
 					</td>
 					<td>
@@ -112,7 +113,7 @@ table th,td{border:1px solid #c0c0c0;}
 					<td>
 						{{result.author}}
 					</td>
-					<td style="border:1px solid #c0c0c0">
+					<td style="border:1px solid #c0c0c0" width="100px">
 						{{result.pubtime|date:"Y年m月d日"}}
 					</td>
 				</tr>

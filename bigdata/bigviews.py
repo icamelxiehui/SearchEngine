@@ -11,7 +11,7 @@ from models import Research
 def index(request):
     carry_data = {'news':[]}
     tot_co = News.objects.count()
-    per_co = 20
+    per_co = 50
 
     page=0
     if request.GET:
@@ -39,7 +39,7 @@ def index(request):
 def report(request):
     carry_data = {'report':[]}
     tot_co = Report.objects.count()
-    per_co = 20
+    per_co = 50
 
     page=0
     if request.GET:
@@ -67,7 +67,7 @@ def report(request):
 def research(request):
     carry_data = {'research':[]}
     tot_co = Research.objects.count()
-    per_co = 20
+    per_co = 50
 
     page=0
     if request.GET:
