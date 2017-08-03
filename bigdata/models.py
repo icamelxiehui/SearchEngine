@@ -37,7 +37,7 @@ class Research(Document):
     pubtime = DateTimeField()
     content = StringField()
     meta = { 'collection': 'research'}
-class Marketoveriew(Document):
+class Marketoverview(Document):
     title = StringField(max_length=50)  
     url = StringField(max_length=50)  
     pubtime = DateTimeField()
@@ -46,5 +46,5 @@ class Marketoveriew(Document):
     image= StringField(max_length=50)  
     content = StringField()
     description = StringField()
-    meta = { 'collection': 'market_overiew'}
+    meta = { 'collection': 'market_overview'}
 

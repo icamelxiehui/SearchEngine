@@ -28,7 +28,7 @@ urlpatterns = [
     url(r'^datanews/', bigviews.index),
     url(r'^datareport/', bigviews.report),
     url(r'^dataresearch/', bigviews.research),
-    url(r'^datamarketoveriew/', bigviews.marketoveriew),
+    url(r'^datamarketoverview/', bigviews.marketoverview),
 
     url(r'^search/', search_views.MySeachView(), name='haystack_search'),  
     url(r'^test/', search_views.MyTestView(), name='haystack_search'),  

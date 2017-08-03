@@ -6,7 +6,7 @@ from django.views.decorators.csrf import csrf_protect
 from models import News
 from models import Report
 from models import Research
-from models import Marketoveriew
+from models import Marketoverview
 
 @csrf_protect
 def index(request):
@@ -94,9 +94,9 @@ def research(request):
         carry_data['research'].append(tmp)
     return render(request, "bigdata/index.html", carry_data)
 @csrf_protect
-def marketoveriew(request):
-    carry_data = {'marketoveriew':[]}
-    tot_co = Marketoveriew.objects.count()
+def marketoverview(request):
+    carry_data = {'marketoverview':[]}
+    tot_co = Marketoverview.objects.count()
     print tot_co
     per_co = 50
 
@@ -112,11 +112,11 @@ def marketoveriew(request):
     if tot_co > per_co * page:
         carry_data['has_next'] = True
         carry_data['next_page_number'] = page + 1
-    for item in Marketoveriew.objects.order_by('-pubtime')[page*per_co:page*per_co+per_co]:
+    for item in Marketoverview.objects.order_by('-pubtime')[page*per_co:page*per_co+per_co]:
         tmp = {}
         tmp['title'] = item.title
         tmp['url'] = item.url
         tmp['author'] = item.author
         tmp['pubtime'] = item.pubtime
-        carry_data['marketoveriew'].append(tmp)
+        carry_data['marketoverview'].append(tmp)
     return render(request, "bigdata/index.html", carry_data)
