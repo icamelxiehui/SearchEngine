@@ -24,6 +24,7 @@ urlpatterns = [
     #url(r'^admin/', admin.site.urls),
     url(r'^$', views.index),  # new
     url(r'^textseg/', views.textseg),
+    url(r'^emotion/', views.emotion),
     url(r'^bigdata/', bigviews.index),
     url(r'^datanews/', bigviews.index),
     url(r'^datareport/', bigviews.report),

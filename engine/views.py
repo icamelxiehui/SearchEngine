@@ -39,3 +39,18 @@ def textseg(request):
     else:
          return render(request, "textseg.html", carry_data)
 
+def emotion(request):
+    carry_data ={}
+    if request.POST:
+        query = request.POST['q'].strip()
+        #c = zerorpc.Client()
+        #c.connect("tcp://127.0.0.1:4243")
+        #ret = c.process(query.encode('utf-8'))
+        ret = requests.post("http://127.0.0.1:5000",params={'query':query}).text
+        ret = ret.strip("/")
+        carry_data["query"] = query
+        carry_data["content"] = ret
+        return render(request, "emotion.html", carry_data)
+    else:
+         return render(request, "emotion.html", carry_data)
+
