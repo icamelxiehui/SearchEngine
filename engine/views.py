@@ -31,7 +31,9 @@ def textseg(request):
         #c = zerorpc.Client()
         #c.connect("tcp://127.0.0.1:4243")
         #ret = c.process(query.encode('utf-8'))
+        print "111"
         ret = requests.post("http://127.0.0.1:5000",params={'query':query}).text
+        print "ret:", ret
         ret = ret.strip("/")
         carry_data["query"] = query
         carry_data["content"] = ret
@@ -47,9 +49,12 @@ def emotion(request):
         #c.connect("tcp://127.0.0.1:4243")
         #ret = c.process(query.encode('utf-8'))
         ret = requests.post("http://127.0.0.1:5000",params={'query':query}).text
-        ret = ret.strip("/")
+        print "ret1:", ret
+        carry_data["content"] = ret.strip("/")
+        res = requests.post("http://127.0.0.1:5004",params={'query':ret.encode('utf-8')}).text
+        print "ret2:", res
         carry_data["query"] = query
-        carry_data["content"] = ret
+        carry_data["emotion"] = res
         return render(request, "emotion.html", carry_data)
     else:
          return render(request, "emotion.html", carry_data)

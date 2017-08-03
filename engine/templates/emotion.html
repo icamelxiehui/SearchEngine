@@ -17,12 +17,12 @@ function changerow(){
 }
 </script>
 <div id="sc_box" style="margin:0 auto;">
-<form method="POST" action="/textseg/">
+<form method="POST" action="/emotion/">
  {% csrf_token %} 
  <div style="height:50px;"></div>
 <div >
 	<div style="height:50px;text-align:left">
-<input type="submit"  class="btn" id="ssb" style="margin-left:500px;font-size:16px;margin-bottom:10px;color:red;width:80px;background-color:#38f;color:white;font-family:幼圆;border:0px;height:40px;cursor:pointer" value="金融情感分析">
+<input type="submit"  class="btn" id="ssb" style="margin-left:500px;font-size:16px;margin-bottom:10px;color:red;width:80px;background-color:#38f;color:white;font-family:幼圆;border:0px;height:40px;cursor:pointer" value="情感分析">
 	</div>
 	<div style="width:1000px;margin-left:80px;text-align:left;font-size:14px;">
 <textarea rows = "10" cols="120" name = "q" id="erea" onkeypress="changerow()" style="font-size:14px">
@@ -30,6 +30,10 @@ function changerow(){
 </textarea>
 <div style="width:860px;height:151px;background-color:#ebebeb;font-size:14px;" id="result">
 	{{content}}
+</div>
+<div style="margin-top:10px;width:860px;height:151px;background-color:#ebebeb;font-size:14px;" id="result">
+	情感分析结果：
+	{{emotion}}
 </div>
 </div>
 </div>
