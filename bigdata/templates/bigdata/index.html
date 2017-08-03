@@ -1,0 +1,134 @@
+{% extends 'bigdata/base.html' %}
+{% block title %}金融数据商城，专注与金融大数据{% endblock %}
+{% block content %}
+<script type="text/javascript">
+function changeBgColor(link)
+{
+
+	var alllinks=document.getElementById("left_nav").getElementsByTagName("a");
+	for (var i=0; i<alllinks.length; i++){
+		    alllinks[i].className="";
+			    }
+	link.className="current";
+}
+</script>
+<style type="text/css">
+table th,td{border:1px solid #c0c0c0;}
+.current{background-color:white;}
+.row1{background-color:white;}
+.row2{background-color:#c0c0c0;}
+</style>
+<div style="">
+<div id="left_nav"style="width:150px;float:left;background-color:#c0c0c0">
+	<ul>
+		<li style="background-color:#5bc0de;">数据</li>
+		<li class="{% if news %}current{% endif %}"><a href="/datanews">新闻</a></li>
+		<li class="{% if report %}current{% endif %}"><a href="/datareport">公告</a></li>
+		<li class="{% if research %}current{% endif %}"><a href="/dataresearch">研报</a></li>
+	</ul>
+</div>
+
+<div style="width:900px;float:left;text-align:left">
+	{% if news %}
+	<table border="0" cellspacing="0" cellpadding="0" width="100%">
+				<tr>
+					<th style="border:1px solid #c0c0c0">标题</th>
+					<th style="border:1px solid #c0c0c0">作者</th>
+					<th style="border:1px solid #c0c0c0">日期</th>
+				</tr>
+				{% for result in news %}
+				<tr class="{% cycle 'row1' 'row2' %}"> 
+					<td style="border:1px solid #c0c0c0">
+						<a href="{{ result.url }}">{{ result.title }}</a>
+					</td>
+					<td>
+						{{result.author}}
+					</td>
+					<td style="border:1px solid #c0c0c0">
+						{{result.pubtime|date:"Y年m月d日"}}
+					</td>
+				</tr>
+				{% empty %}
+				<tr><td>No results found.<td></tr>
+				{% endfor %}
+				<tr><td colspan="4" style="text-align:center">
+                    {% if has_previous %}<a href="?page={{ previous_page_number }}">{% endif %}« 上一页{% if has_previous %}</a>{% endif %}
+                    |
+                    {% if has_next %}<a href="?page={{ next_page_number }}">{% endif %}下一页 »{% if has_next %}</a>{% endif %}
+					&nbsp;&nbsp;总条数:{{totnum}}
+					</td></tr>
+	</table>
+	{% endif %}
+	{% if report %}
+	<table border="0" cellspacing="0" cellpadding="0" width="100%">
+				<tr>
+					<th style="border:1px solid #c0c0c0">标题</th>
+					<th style="border:1px solid #c0c0c0">类型</th>
+					<th style="border:1px solid #c0c0c0">日期</th>
+				</tr>
+				{% for result in report %}
+				<tr class="{% cycle 'row1' 'row2' %}"> 
+					<td style="border:1px solid #c0c0c0">
+						<a href="{{ result.url }}">{{ result.title }}</a>
+					</td>
+					<td>
+						{{result.category}}
+					</td>
+					<td style="border:1px solid #c0c0c0">
+						{{result.pubtime|date:"Y年m月d日"}}
+					</td>
+				</tr>
+				{% empty %}
+				<tr><td>No results found.<td></tr>
+				{% endfor %}
+				<tr><td colspan="4" style="text-align:center">
+                    {% if has_previous %}<a href="?page={{ previous_page_number }}">{% endif %}« 上一页{% if has_previous %}</a>{% endif %}
+                    |
+                    {% if has_next %}<a href="?page={{ next_page_number }}">{% endif %}下一页 »{% if has_next %}</a>{% endif %}
+					&nbsp;&nbsp;总条数:{{totnum}}
+					</td></tr>
+	</table>
+	{% endif %}
+	{% if research %}
+	<table border="0" cellspacing="0" cellpadding="0" width="100%">
+				<tr>
+					<th style="border:1px solid #c0c0c0">标题</th>
+					<th style="border:1px solid #c0c0c0">类别</th>
+					<th style="border:1px solid #c0c0c0">机构</th>
+					<th style="border:1px solid #c0c0c0">作者</th>
+					<th style="border:1px solid #c0c0c0">日期</th>
+				</tr>
+				{% for result in research %}
+				<tr class="{% cycle 'row1' 'row2' %}"> 
+					<td style="border:1px solid #c0c0c0">
+						<a href="{{ result.url }}">{{ result.title }}</a>
+					</td>
+					<td>
+						{{result.category}}
+					</td>
+					<td>
+						{{result.institution}}
+					</td>
+					<td>
+						{{result.author}}
+					</td>
+					<td style="border:1px solid #c0c0c0">
+						{{result.pubtime|date:"Y年m月d日"}}
+					</td>
+				</tr>
+				{% empty %}
+				<tr><td>No results found.<td></tr>
+				{% endfor %}
+				<tr><td colspan="5" style="text-align:center">
+                    {% if has_previous %}<a href="?page={{ previous_page_number }}">{% endif %}« 上一页{% if has_previous %}</a>{% endif %}
+                    |
+                    {% if has_next %}<a href="?page={{ next_page_number }}">{% endif %}下一页 »{% if has_next %}</a>{% endif %}
+					&nbsp;&nbsp;总条数:{{totnum}}
+					</td></tr>
+	</table>
+	{% endif %}
+</div>
+</div>
+{% endblock %}
+</div>
+

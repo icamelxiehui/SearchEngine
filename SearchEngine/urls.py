@@ -18,11 +18,17 @@ from django.conf.urls import include
 from django.contrib import admin
 from engine import search_views
 from engine import views
+from bigdata import bigviews
 
 urlpatterns = [
     #url(r'^admin/', admin.site.urls),
     url(r'^$', views.index),  # new
     url(r'^textseg/', views.textseg),
+    url(r'^bigdata/', bigviews.index),
+    url(r'^datanews/', bigviews.index),
+    url(r'^datareport/', bigviews.report),
+    url(r'^dataresearch/', bigviews.research),
+
     url(r'^search/', search_views.MySeachView(), name='haystack_search'),  
     url(r'^test/', search_views.MyTestView(), name='haystack_search'),  
 ]

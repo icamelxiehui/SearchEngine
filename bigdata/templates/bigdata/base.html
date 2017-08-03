@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}默认标题{% endblock %}</title>
+<style type="text/css">
+
+*{
+margin: 0px;
+padding: 0px;
+}
+ol,ul{list-style:none;}
+#nav {height:24px;padding:5px 0;display:block;border-bottom:1px solid #ebebeb;color:red}
+#sc_box{height:1150px;}
+#sc_box div{height:100px;vertical-align:text-bottom;}
+#sc_box div p{vertical-align:text-bottom;}
+#sc_box #ct {width:500px;height:40px;}
+#sc_box #ssb {width:100px;height:40px;border:1px solid #c0c0c0}
+#sc_res{margin-top:20px;margin-left:40px}
+#sc_res #ct {width:550px;height:30px;}
+#sc_res #ssb {width:100px;height:30px;border:1px solid #c0c0c0}
+</style>
+</head>
+{% load static %}
+<link rel="stylesheet" href="static/css/style.css" type="text/css" media="all"> 
+<script src="{% static "js/echarts.js" %}" type="text/javascript"></script>
+<body style="text-align:center">
+<div id="nav"> 
+	金融数据商城
+</div>
+{% block content %}
+<div>这里是默认内容，所有继承自这个模板的，如果不覆盖就显示这里的默认内容。</div>
+{% endblock %}
+ 
+</body>
+</html>
