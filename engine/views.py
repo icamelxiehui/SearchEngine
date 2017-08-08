@@ -59,3 +59,16 @@ def emotion(request):
     else:
          return render(request, "emotion.html", carry_data)
 
+def newsread(request):
+    carry_data ={}
+    if request.POST:
+        query = request.POST['q'].strip()
+        res = requests.post("http://127.0.0.1:5005",params={'query':query}).text
+        data = json.loads(res)
+        carry_data["query"] = query
+        carry_data["summary"] = data['summary']
+        carry_data["content"] = data['content']
+        carry_data["stock_list"] = data['stock_list']
+        return render(request, "newsreader.html", carry_data)
+    else:
+         return render(request, "newsreader.html", carry_data)

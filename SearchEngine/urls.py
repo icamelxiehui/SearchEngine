@@ -25,6 +25,7 @@ urlpatterns = [
     url(r'^$', views.index),  # new
     url(r'^textseg/', views.textseg),
     url(r'^emotion/', views.emotion),
+    url(r'^newsread/', views.newsread),
     url(r'^bigdata/', bigviews.index),
     url(r'^datanews/', bigviews.index),
     url(r'^datareport/', bigviews.report),
