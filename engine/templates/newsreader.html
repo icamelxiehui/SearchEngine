@@ -1,21 +1,6 @@
 {% extends 'base.html' %}
-{% block title %}金融文本情感分析系统{% endblock %}
+{% block title %}金融资讯解读系统{% endblock %}
 {% block content %}
-<script type="text/javascript">
-var rows=10;//根据文本框初始值设置。
-var num=10;
-var height = 155
-function changerow(){
-	num++;
-	height += 15.5
-	if(event.keyCode==13){  
-	document.getElementById("erea").rows=num;
-	var o = document.getElementById("result")
-	var w=o.offsetHeight;
-	o.style.height=w+15.1+'px';
-	}
-}
-</script>
 <div id="sc_box" style="margin:0 auto;">
 <form method="POST" action="/newsread/">
  {% csrf_token %} 
@@ -26,27 +11,36 @@ function changerow(){
 	</div>
 	<div style="width:1000px;margin-left:80px;text-align:left;font-size:14px;">
 <p>输入资讯url</p>
-<textarea rows = "5" value="请输入资讯url" cols="120" name = "q" id="erea" onkeypress="changerow()" style="font-size:14px">
+<textarea rows = "3" value="请输入资讯url" cols="120" name = "q" id="erea" onkeypress="changerow()" style="font-size:14px">
 	{{query}}
 </textarea>
-<p>资讯标题：</p>
-<div style="margin-top:10px;width:860px;height:151px;background-color:#ebebeb;font-size:14px;" id="result">
+<p style="color:red">资讯标题：</p>
+<p style="min-height:50px;margin-bottom:10px;width:860px;background-color:#ebebeb;font-size:14px;" id="result">
 	{{title}}
-</div>
-<p>资讯摘要：</p>
-<div style="margin-top:10px;width:860px;height:151px;background-color:#ebebeb;font-size:14px;" id="result">
+</p>
+<p style="color:red">资讯摘要：</p>
+<p style="min-height:100px;margin-bottom:10px;width:860px;background-color:#ebebeb;font-size:14px;" id="result">
 	{{summary}}
-</div>
-股票列表：
-<div style="margin-top:10px;width:860px;height:151px;background-color:#ebebeb;font-size:14px;" id="result">
+</p>
+<p style="color:red">
+关联股票：</p>
+<p style="min-height:100px;margin-bottom:10px;width:860px;background-color:#ebebeb;font-size:14px;" id="result">
 {% for item in stock_list %}
 	{{item}}
 {% endfor%}
-</div>
-<p>资讯文本</p>
-<div style="height:1000px;margin-top:10px;width:860px;background-color:#ebebeb;font-size:14px;" id="result">
+</p>
+<p style="color:red">
+资讯情感：</p>
+<p style="min-height:50px;margin-bottom:10px;width:860px;background-color:#ebebeb;font-size:14px;" id="result">
+</p>
+<p style="color:red">
+关联行业、概率、板块：</p>
+<p style="min-height:50px;margin-bottom:10px;width:860px;background-color:#ebebeb;font-size:14px;" id="result">
+</p>
+<p style="color:red">资讯文本</p>
+<p style="min-height:100px;margin-bottom:10px;width:860px;background-color:#ebebeb;font-size:14px;" id="result">
 	{{content}}
-</div>
+</p>
 </div>
 </div>
 </form> 
