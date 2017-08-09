@@ -9,6 +9,7 @@ from models import Research
 from models import Marketoverview
 from models import Morningpage
 from models import Zqpage
+from models import Eventstock
 
 @csrf_protect
 def index(request):
@@ -179,3 +180,35 @@ def zqpage(request):
         tmp['pubtime'] = item.pubtime
         carry_data['zqpage'].append(tmp)
     return render(request, "bigdata/index.html", carry_data)
+@csrf_protect
+def eventstock(request):
+    print "start"
+    carry_data = {'eventstock':[]}
+    tot_co = Eventstock.objects.count()
+    print tot_co
+    per_co = 10
+
+    page=0
+    if request.GET:
+        page=int(request.GET['page'])
+
+    carry_data['has_previous'] = False
+    carry_data['totnum'] = tot_co
+    if page > 0:
+        carry_data['has_previous'] = True
+        carry_data['previous_page_number'] = page - 1
+    carry_data['has_next'] = False
+    if tot_co > per_co * page:
+        carry_data['has_next'] = True
+        carry_data['next_page_number'] = page + 1
+    print "next:",carry_data['has_next']
+    for item in Eventstock.objects.order_by('-pubtime')[page*per_co:page*per_co+per_co]:
+        tmp = {}
+        tmp['title'] = item.title
+        tmp['emotion'] = item.emotion
+        tmp['url'] = "#"
+        tmp['summary'] = item.summary
+        tmp['pubtime'] = item.pubtime
+        tmp['stock_list'] = item.stock_list
+        carry_data['eventstock'].append(tmp)
+    return render(request, "bigdata/eventstock.html", carry_data)

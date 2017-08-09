@@ -1,0 +1,60 @@
+{% extends 'bigdata/base.html' %}
+{% block title %}事件选股{% endblock %}
+{% block content %}
+<div id="nav" style="color:#38f;padding:20px;margin-top:20px">
+事件驱动今日牛股
+</div>
+<script type="text/javascript">
+function changeBgColor(link)
+{
+
+	var alllinks=document.getElementById("left_nav").getElementsByTagName("a");
+	for (var i=0; i<alllinks.length; i++){
+		    alllinks[i].className="";
+			    }
+	link.className="current";
+}
+</script>
+<style type="text/css">
+table th,td{border:1px solid #c0c0c0;padding:5px}
+table th{background-color:#38f;color:white}
+.current{background-color:white;}
+.row1{background-color:white;}
+.row2{background-color:#c0c0c0;}
+#left_nav ul li{padding-left:20px;padding-right:20px;font-size:13px;margin-bottom:5px}
+</style>
+
+<div style="width:900px;margin:0 auto;text-align:left;font-size:12px;background-color:#f1f2f3;padding:20px">
+	{% if eventstock %}
+				{% for result in eventstock %}
+			<div style="margin-bottom:20px;margin-top:5px;box-shadow:0 4px 7px 1px rgba(188,200,209,.64);padding:10px;background:#fff">
+                <p style="margin-bottom:0px;font-size:18px;font-weight:bold">
+                    <a href="{{ result.url }}" style="font-family:'黑体';color:#38f;text-decoration:none">{{result.title}}</a>
+                </p>
+				<p style="font-size:13.5px;margin-bottom:0px;margin-top:10px;color:#888">
+					{{result.summary}}
+				</p>
+				<p style="font-size:13.5px;margin-bottom:0px;margin-top:10px;color:red">
+				{{result.stock_list}} &nbsp;
+				</p>
+				<p style="font-size:13.5px;margin-bottom:0px;margin-top:10px;color:green">
+				{{result.pubtime | date:"Y年m月d日"}} &nbsp;
+				</p>
+			</div>
+				{% empty %}
+				<p>No results found.</p>
+				{% endfor %}
+            {% if has_previous or has_next %}
+                <div style="margin-top:20px;text-align:center;">
+                    {% if has_previous %}<a href="?q={{ query }}&page={{ previous_page_number }}">{% endif %}« 上一页{% if has_previous %}</a>{% endif %}
+                    |
+                    {% if has_next %}<a href="?q={{ query }}&page={{ next_page_number }}">{% endif %}下一页 »{% if has_next %}</a>{% endif %}
+					&nbsp;&nbsp;总条数:{{totnum}}
+                </div>
+            {% endif %}
+	{% endif %}
+</div>
+</div>
+{% endblock %}
+</div>
+

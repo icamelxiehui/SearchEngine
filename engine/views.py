@@ -67,6 +67,7 @@ def newsread(request):
         data = json.loads(res)
         carry_data["query"] = query
         carry_data["summary"] = data['summary']
+        carry_data["emotion"] = data['emotion']
         carry_data["title"] = data['title']
         carry_data["content"] = data['content']
         carry_data["stock_list"] = data['stock_list']

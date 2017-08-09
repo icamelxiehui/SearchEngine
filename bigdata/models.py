@@ -70,3 +70,11 @@ class Zqpage(Document):
     description = StringField()
     meta = { 'collection': 'zq_page'}
 
+class Eventstock(Document):
+    title = StringField(max_length=50)  
+    url = StringField(max_length=50)  
+    emotion = StringField(max_length=50)  
+    pubtime = DateTimeField()
+    summary = StringField(max_length=50)  
+    stock_list= StringField(max_length=50)  
+    meta = { 'collection': 'even_stock'}

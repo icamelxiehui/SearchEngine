@@ -28,6 +28,7 @@ urlpatterns = [
     url(r'^newsread/', views.newsread),
     url(r'^bigdata/', bigviews.index),
     url(r'^datanews/', bigviews.index),
+    url(r'^dataeventstock/', bigviews.eventstock),
     url(r'^datareport/', bigviews.report),
     url(r'^dataresearch/', bigviews.research),
     url(r'^datamarketoverview/', bigviews.marketoverview),
