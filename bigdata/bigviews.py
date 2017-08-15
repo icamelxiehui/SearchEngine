@@ -1,3 +1,4 @@
+#coding=utf-8
 from django.shortcuts import render
 
 # Create your views here.
@@ -205,10 +206,16 @@ def eventstock(request):
     for item in Eventstock.objects.order_by('-pubtime')[page*per_co:page*per_co+per_co]:
         tmp = {}
         tmp['title'] = item.title
+        if item.title.find("：") != -1:
+        	tmp['title'] = item.title.split("：")[1]
         tmp['emotion'] = item.emotion
         tmp['url'] = "#"
         tmp['summary'] = item.summary
         tmp['pubtime'] = item.pubtime
-        tmp['stock_list'] = item.stock_list
+        if len(item.stock_list) < 1:
+            continue
+        tmp['stock_list'] = " ".join(item.stock_list.split("\t")[0:6])
+        print item.stock_list.split(" ")
+        print item.stock_list.split("\t")
         carry_data['eventstock'].append(tmp)
     return render(request, "bigdata/eventstock.html", carry_data)

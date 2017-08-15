@@ -1,8 +1,8 @@
 {% extends 'bigdata/base.html' %}
 {% block title %}事件选股{% endblock %}
 {% block content %}
-<div id="nav" style="color:#38f;padding:20px;margin-top:20px">
-事件驱动今日牛股
+<div id="nav" style="color:#38f;padding:20px;margin-top:20px;font-weight:bold;">
+事件选股
 </div>
 <script type="text/javascript">
 function changeBgColor(link)
@@ -28,7 +28,7 @@ table th{background-color:#38f;color:white}
 	{% if eventstock %}
 				{% for result in eventstock %}
 			<div style="margin-bottom:20px;margin-top:5px;box-shadow:0 4px 7px 1px rgba(188,200,209,.64);padding:10px;background:#fff">
-                <p style="margin-bottom:0px;font-size:18px;font-weight:bold">
+                <p style="margin-bottom:0px;font-size:18px;">
                     <a href="{{ result.url }}" style="font-family:'黑体';color:#38f;text-decoration:none">{{result.title}}</a>
                 </p>
 				<p style="font-size:13.5px;margin-bottom:0px;margin-top:10px;color:#888">

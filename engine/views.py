@@ -64,12 +64,16 @@ def newsread(request):
     if request.POST:
         query = request.POST['q'].strip()
         res = requests.post("http://127.0.0.1:5005",params={'query':query}).text
+        print res
         data = json.loads(res)
         carry_data["query"] = query
         carry_data["summary"] = data['summary']
         carry_data["emotion"] = data['emotion']
         carry_data["title"] = data['title']
+        carry_data["pubtime"] = data['pubtime']
+        carry_data["source"] = data['source']
         carry_data["content"] = data['content']
+        carry_data["category"] = "\t".join(data['category'])
         carry_data["stock_list"] = data['stock_list']
         return render(request, "newsreader.html", carry_data)
     else:
